@@ -15,7 +15,7 @@ public class Point3D extends Point {
         return this.z;
     }
     public void setLocation(int x, int y, int z) {
-        super.setLocation(x, y); // Встановлюємо x та y через батьківський метод
+        super.setLocation(x, y);
         this.z = z;
     }
 
@@ -33,17 +33,14 @@ public class Point3D extends Point {
 
     @Override
     public double distanceFromOrigin() {
-        // Формула: sqrt(x^2 + y^2 + z^2)
         int x = getX();
         int y = getY();
         return Math.sqrt(x*x + y*y + this.z*this.z);
     }
     public double distance(Point3D p) {
-        // Формула: sqrt((x1-x2)^2 + (y1-y2)^2 + (z1-z2)^2)
         int dx = this.getX() - p.getX();
         int dy = this.getY() - p.getY();
-        int dz = this.z - p.getZ(); // Або p.z, якщо z не private
-
+        int dz = this.z - p.getZ();
         return Math.sqrt(dx*dx + dy*dy + dz*dz);
     }
 }

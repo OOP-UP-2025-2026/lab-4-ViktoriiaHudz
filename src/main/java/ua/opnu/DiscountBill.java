@@ -1,6 +1,4 @@
 package ua.opnu;
-
-// Необхідні імпорти для точних розрахунків
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -18,13 +16,11 @@ public class DiscountBill extends GroceryBill {
 
     @Override
     public void add(Item item) {
-        super.add(item); // Додаємо товар до списку
+        super.add(item);
         if (regularCustomer && item.getDiscount() > 0.0) {
             this.discountCount++;
         }
     }
-
-
 
     private BigDecimal getPreciseOriginalTotal() {
         BigDecimal originalTotal = BigDecimal.ZERO;
@@ -35,7 +31,6 @@ public class DiscountBill extends GroceryBill {
         }
         return originalTotal;
     }
-
 
     private BigDecimal getPreciseDiscountAmount() {
 
@@ -52,15 +47,11 @@ public class DiscountBill extends GroceryBill {
         return totalDiscount;
     }
 
-
-
     @Override
     public double getTotal() {
 
         BigDecimal originalTotal = getPreciseOriginalTotal();
         BigDecimal totalDiscount = getPreciseDiscountAmount();
-
-
         return originalTotal.subtract(totalDiscount).doubleValue();
     }
 
@@ -80,13 +71,8 @@ public class DiscountBill extends GroceryBill {
         if (originalTotal.compareTo(BigDecimal.ZERO) == 0) {
             return 0.0;
         }
-
-
         BigDecimal discountedTotal = originalTotal.subtract(getPreciseDiscountAmount());
-
         BigDecimal hundred = new BigDecimal("100");
-
-
         BigDecimal pct = hundred.subtract(
                 discountedTotal.multiply(hundred).divide(originalTotal, 13, RoundingMode.HALF_UP)
         );

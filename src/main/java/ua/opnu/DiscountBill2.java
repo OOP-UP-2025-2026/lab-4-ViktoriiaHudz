@@ -19,7 +19,6 @@ public class DiscountBill2 {
 
     public void add(Item item) {
         innerBill.add(item);
-
         if (regularCustomer && item.getDiscount() > 0.0) {
             this.discountCount++;
             this.discountAmount += item.getDiscount();
@@ -29,7 +28,6 @@ public class DiscountBill2 {
     public double getTotal() {
         double originalTotal = innerBill.getTotal();
         double total = originalTotal - this.discountAmount;
-
         return BigDecimal.valueOf(total).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
@@ -38,8 +36,7 @@ public class DiscountBill2 {
     }
 
     public double getDiscountAmount() {
-        // також можна округлити, щоб уникнути дрібних похибок
-        return BigDecimal.valueOf(this.discountAmount).setScale(2, RoundingMode.HALF_UP).doubleValue();
+          return BigDecimal.valueOf(this.discountAmount).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
     public double getDiscountPercent() {

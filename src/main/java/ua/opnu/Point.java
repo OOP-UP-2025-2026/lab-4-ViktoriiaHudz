@@ -5,7 +5,7 @@ public class Point {
     private int y;
 
     public Point() {
-        this(0, 0); // Встановлює x=0, y=0
+        this(0, 0);
     }
     public Point(int x, int y) {
         this.x = x;
@@ -26,7 +26,6 @@ public class Point {
     public String toString() {
         return "(" + x + ", " + y + ")";
     }
-
     public double distanceFromOrigin() {
         return Math.sqrt(x*x + y*y);
     }

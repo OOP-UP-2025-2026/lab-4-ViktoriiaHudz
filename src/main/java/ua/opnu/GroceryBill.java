@@ -21,7 +21,6 @@ public class GroceryBill {
         return total;
     }
     public Employee getClerk() {
-        // "clerk" - це ім'я вашої змінної Employee у класі GroceryBill
         return this.clerk;
     }
 }
